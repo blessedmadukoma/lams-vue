@@ -1,0 +1,20 @@
+.content {
+ margin-left: 70px;
+}
+
+.content button {
+ width: 60%;
+ border-radius: 20px;
+ height: 50px;
+ margin: 10px 0;
+}
+
+.grid {
+ margin-top: 90px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 10px;
+ justify-content: space-between;
+ align-items: center;
+ height: 100%;
+}
