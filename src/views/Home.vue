@@ -18,20 +18,20 @@
         ><button class="login-button">Sign in</button></router-link
       >
     </div>
-    <!-- <div><img class="woman" src="../../woman.png" alt="" /></div> -->
+    <div><img class="woman" src="../assets/Icons/woman.png" alt="" /></div>
 
-    <div>
+    <!-- <div class="img">
       <womanIcon />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import womanIcon from "@/assets/Icons/womanbulb.svg";
+// import womanIcon from "@/assets/Icons/womanbulb.svg";
 export default {
   name: "Home",
   components: {
-    womanIcon,
+    //     womanIcon,
   },
 };
 </script>
@@ -45,9 +45,13 @@ export default {
 h4 {
   font-weight: 400;
 }
+h2 {
+  font-size: 30px;
+}
 .easily {
   color: #2336e5;
-  font-weight: 900;
+  // font-size: 42px;
+  font-weight: bolder;
 }
 .grid div.content {
   padding-left: 5%;

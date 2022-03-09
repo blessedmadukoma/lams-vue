@@ -23,14 +23,14 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <!-- If the person is not signed in: do this on -->
-        <!-- <router-link class="link" to="#">Sign up</router-link>
-        <router-link class="link" to="#">Sign in</router-link> -->
+        <router-link class="link" to="#">Sign up</router-link>
+        <router-link class="link" to="#">Sign in</router-link>
 
         <!-- If the person is signed in, do this: -->
-        <router-link class="link" to="#">Home</router-link>
+        <!-- <router-link class="link" to="#">Home</router-link>
         <router-link class="link" to="#">Light</router-link>
         <router-link class="link" to="#">Settings</router-link>
-        <router-link class="link" to="#">Logout</router-link>
+        <router-link class="link" to="#">Logout</router-link> -->
       </ul>
     </transition>
   </header>
