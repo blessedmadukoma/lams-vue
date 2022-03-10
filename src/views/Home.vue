@@ -10,11 +10,11 @@
         </h4>
       </div>
       <br />
-      <router-link to="#"
+      <router-link :to="{ name: 'Register' }"
         ><button class="signup-button">Sign up</button></router-link
       >
       <br />
-      <router-link to="#"
+      <router-link :to="{ name: 'Login' }"
         ><button class="login-button">Sign in</button></router-link
       >
     </div>
@@ -89,6 +89,7 @@ h2 {
   background-color: #090682;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 .login-button {
   width: 90%;
@@ -99,6 +100,7 @@ h2 {
   background-color: #efeeee;
   color: #090682;
   font-weight: semibold;
+  cursor: pointer;
 }
 // }
 // .woman {

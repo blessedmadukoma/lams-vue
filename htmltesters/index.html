@@ -1,37 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
- <link rel="stylesheet" href="style.css">
-</head>
+<head></head>
 
 <body>
- <div class="home no-user grid">
-
-  <div class="content">
-   <div>
-    <h2>Control your lights <span class="easily">easily</span></h2>
-    <br />
-    <br />
-    <h4>Making light management easier, faster and better</h4>
-   </div>
-   <div class="blog-photo">
-    <womanIcon class="womanIcon" />
-   </div>
-   <router-link class="router-button" to="#"><button>Sign up</button></router-link>
-   <br />
-   <button class="login-button" to="#">Login</button>
+ <div class="gradient">
+  <div class="text">
+   <h4>Total Power Used</h4>
+   <h2><strong>500</strong>Watt</h2>
   </div>
-  <img src="./womanbulb.svg" alt="">
  </div>
 
- <script>
-
- </script>
+ <div class="toggle-edit">
+  <span>Toggle</span>
+  <input type="checkbox">
+ </div>
 </body>
 
-</html>
+</html> <br /><br />
+<style>
+ .gradient {
+  box-sizing: border-box;
+  background: linear-gradient(rgba(95, 92, 255, 1), rgba(8, 6, 129, 1));
+  width: 605px;
+  height: 306px;
+ }
+
+ .text {
+  padding-top: 50px;
+  color: white;
+  text-align: center;
+ }
+
+ h4 {
+
+  font-size: 34px;
+ }
+
+ .toggle-edit {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+ }
+
+ span {
+  margin-right: 16px;
+ }
+
+ input[type="checkbox"] {
+  position: relative;
+  border: none;
+  -webkit-appearance: none;
+  background: #c6bbbb;
+  outline: none;
+  width: 80px;
+  height: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+ }
+
+ input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #fdfdfd;
+  transform: scale(1.1);
+  transition: 300ms ease all;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+ }
+
+ input:checked[type="checkbox"]:before {
+  background: #0cc61f;
+  left: 52px;
+ }
+</style>

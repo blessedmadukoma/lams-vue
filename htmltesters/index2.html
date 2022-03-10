@@ -2,30 +2,185 @@
 <html lang="en">
 
 <head>
+ <link rel="stylesheet" href="style.css">
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Document</title>
- <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
- <div class="no-user grid">
-  <div class="content">
-   <div>
-    <h2>Control your lights <span class="easily">easily</span></h2>
-    <br />
-    <h4>Making light management easier, faster and better</h4>
+ <div>
+  <div class="greetingsArea">
+   <h4>Good Morning
+    <!-- put your sun icon here boss -->
+   </h4>
+   <p>Blessed, </p>
+  </div>
+  <section>
+   <div class="blue500">
+    <p>Total Power Used</p>
+    <p><b>500.0</b> Watt</p>
    </div>
-   <router-link class="router-button" to="#"><button>Sign up</button></router-link>
-   <br />
-   <button class="login-button" to="#">Login</button>
-  </div>
-  <div>
-   <img class="woman" src="../../woman.png" alt="" />
-  </div>
+
+
+
+   <div class="lights">
+    <h4>LIGHTS</h4>
+    <div class="lightSwitchButton">
+     <div>Light 1</div>
+     <div class="switchContainer">
+      <!-- put switch inside here boss -->
+     </div>
+     <div><button class="view">View</button></div>
+    </div>
+
+    <div class="lightSwitchButton">
+     <div>Light 2</div>
+     <div class="switchContainer">
+      <!-- put switch inside here boss  -->
+     </div>
+     <div><button class="view">View</button></div>
+    </div>
+   </div>
+  </section>
 
  </div>
 </body>
 
 </html>
+
+<style>
+ * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ }
+
+ .greetingsArea {
+  width: 100vw;
+  position: relative;
+  top: 60px;
+ }
+
+ .greetingsArea h4 {
+  padding-top: 5px;
+ }
+
+ .greetingsArea p {
+  padding-top: 15px;
+  padding-bottom: 5px;
+ }
+
+ .greetingsArea h4,
+ .greetingsArea p {
+  position: relative;
+  left: 5vw;
+ }
+
+
+ /* section that contains power used and lights flicker  */
+
+ section {
+  position: relative;
+  width: 100vw;
+  top: 90px;
+  display: flex;
+  flex-direction: row;
+ }
+
+ section .blue500 {
+  width: 40vw;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  left: 5vw;
+  background-image: linear-gradient(to right, #5754F3, #141292);
+  height: 290px;
+  text-align: center;
+ }
+
+ section .blue500 p {
+  padding: 25px;
+  font-size: 2rem;
+ }
+
+ section .lights {
+  left: 10vw;
+  width: 50vw;
+  position: relative;
+ }
+
+
+ /* div that contains light text, the switch and the view button  */
+
+ .lightSwitchButton {
+  display: flex;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .lights h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+ }
+
+ .switchContainer {
+  margin: auto;
+ }
+
+ button.view {
+  position: relative;
+  right: 5vw;
+  background-color: transparent;
+  border: 1px solid black;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+ }
+
+ @media (max-width:660px) {
+
+  html,
+  body {
+   position: relative;
+  }
+
+  section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100vw;
+  }
+
+  section .blue500 {
+   width: 90vw;
+   margin-bottom: 55px;
+   position: relative;
+   left: 0;
+  }
+
+  section .lights {
+   width: 90vw;
+   position: relative;
+   left: 0;
+  }
+
+  button.view {
+   position: relative;
+   right: 0;
+   background-color: transparent;
+   border: 1px solid black;
+   outline: none;
+   padding: 10px;
+   border-radius: 5px;
+  }
+ }
+</style>

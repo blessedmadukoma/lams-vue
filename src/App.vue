@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Navigation from '@/components/Navigation'
+import Navigation from "@/components/Navigation";
 
 export default {
   name: "app",
   components: {
-    Navigation
+    Navigation,
   },
   data() {
     return {};
@@ -57,26 +57,27 @@ export default {
   color: #fff;
 }
 
-// button,
-// .router-button {
-//   transition: 500ms ease all;
-//   cursor: pointer;
-//   margin-top: 24px;
-//   padding: 12px 24px;
-//   background-color: #303030;
-//   color: #fff;
-//   border-radius: 20px;
-//   border: none;
-//   text-transform: uppercase;
+button,
+.router-button {
+  transition: 500ms ease all;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 10px 40px;
+  background-color: #090682;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  text-transform: uppercase;
 
-//   &:focus {
-//     outline: none;
-//   }
+  &:focus {
+    outline: none;
+  }
 
-//   &:hover {
-//     background-color: rgba(48, 48, 48, 0.7);
-//   }
-// }
+  &:hover {
+    // background-color: rgba(80, 78, 78, 0.7);
+    background-color: #1310ac;
+  }
+}
 
 // .button-ghost {
 //   color: #000;
@@ -104,5 +105,4 @@ export default {
 //   cursor: none !important;
 //   background-color: rgba(128, 128, 128, 0.5) !important;
 // }
-
 </style>
