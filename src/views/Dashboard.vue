@@ -2,10 +2,17 @@
   <div>
     <div class="greetingsArea">
       <h4>
-        Good Morning
-        <!-- put your sun icon here boss -->
+        {{ currentDateTime() }}
+        <sun v-if="showSun" />
+        <moon v-else />
+        <!-- <img
+            src="../assets/sun.png"
+            alt=""
+            style="width: 35px; height: 35px"
+          /> -->
       </h4>
-      <p>Blessed,</p>
+
+      <p :firstName="firstName">{{ firstName }},</p>
     </div>
     <section>
       <div class="blue500">
@@ -49,10 +56,43 @@
 
 <script>
 // import womanIcon from "@/assets/Icons/womanbulb.svg";
+import sun from "@/assets/Icons/sun.svg";
+import moon from "@/assets/Icons/moon.svg";
 export default {
   name: "Dashboard",
   components: {
     //     womanIcon,
+    sun,
+    moon,
+  },
+  // props: ["showSun"],
+  data() {
+    return {
+      firstName: "Daniel",
+      showSun: null,
+    };
+  },
+  methods: {
+    currentDateTime() {
+      let message = "";
+      const current = new Date();
+      let time = current.getHours();
+      if (time < 12) {
+        message = "Good morning";
+        this.showSun = true;
+      } else if (time >= 12 && time <= 17) {
+        message = "Good afternoon";
+        this.showSun = true;
+      } else if (time >= 18) {
+        message = "Good evening";
+        this.showSun = false;
+      }
+
+      return message;
+    },
+  },
+  created() {
+    this.showSun;
   },
   computed: {
     editPost: {
@@ -76,6 +116,9 @@ export default {
   box-sizing: border-box;
 }
 
+.isDay {
+  top: 50px;
+}
 .toggle {
   position: absolute;
   // top: 50%;
