@@ -92,7 +92,6 @@ export default {
     },
   },
   created() {
-    this.showSun;
   },
   computed: {
     editPost: {

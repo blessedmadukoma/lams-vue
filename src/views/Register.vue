@@ -42,8 +42,9 @@
           />
           <password class="icon" />
         </div>
+        <div class="error" v-show="error">{{ this.errorMsg }}</div>
       </div>
-      <button>Sign Up</button><br /><br />
+      <button @click.prevent="register">Sign Up</button><br /><br />
       <p class="login-register">
         Already have an account?
         <router-link class="router-link" :to="{ name: 'Login' }"
@@ -60,6 +61,11 @@
 import email from "@/assets/Icons/envelope-regular.svg";
 import password from "@/assets/Icons/lock-alt-solid.svg";
 import user from "@/assets/Icons/user-alt-light.svg";
+
+// firebase
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "@/firebase/firebaseInit";
 export default {
   name: "Register",
   components: {
@@ -69,12 +75,47 @@ export default {
   },
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      error: null,
+      errorMsg:  ""
     };
   },
+  methods: {
+    // Registration function
+    async register() {
+      if (
+        this.email !== "" &&
+        this.firstName !== "" &&
+        this.lastName !== "" &&
+        this.password !== ""
+      ) {
+        this.error = false;
+        this.errorMsg = "";
+        const firebaseAuth = await firebase.auth();
+        const createUser = await firebaseAuth.createUserWithEmailAndPassword(
+          this.email,
+          this.password
+        );
+        const result = await createUser;
+
+        // reach out to firebase collection to get our users -> if it doesn't exist, it creates a new one
+        const dataBase = db.collection("users").doc(result.user.uid); // getting the ID of the result
+        await dataBase.set({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+        });
+        this.$router.push({ name: "Home" });
+        return;
+      }
+      this.error = true;
+      this.errorMsg = "Please fill all the fields";
+      return;
+    },
+  }
 };
 </script>
 
