@@ -10,6 +10,9 @@
 <script>
 import Navigation from "@/components/Navigation";
 
+// firebase
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   name: "app",
   components: {
@@ -18,7 +21,14 @@ export default {
   data() {
     return {};
   },
-  created() {},
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+      if (user) {
+        this.$store.dispatch("getCurrentUser");
+      }
+    });
+  },
   mounted() {},
   methods: {},
   watch: {},
@@ -80,10 +90,10 @@ button,
 }
 
 .error {
-    text-align: center;
-    font-size: 12px;
-    color: red;
-  }
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}
 
 // .button-ghost {
 //   color: #000;

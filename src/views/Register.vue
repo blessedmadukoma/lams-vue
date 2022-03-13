@@ -80,12 +80,13 @@ export default {
       email: "",
       password: "",
       error: null,
-      errorMsg:  ""
+      errorMsg: "",
     };
   },
   methods: {
     // Registration function
     async register() {
+      console.log("Email:", this.email);
       if (
         this.email !== "" &&
         this.firstName !== "" &&
@@ -108,6 +109,18 @@ export default {
           lastName: this.lastName,
           email: this.email,
         });
+
+        const lights = db.collection("lights").doc(result.user.uid); // getting the ID of the result
+        await lights.set({
+          name: "Light 1",
+          state: true,
+        });
+        await lights.set({
+          name: "Light 2",
+          state: false,
+        });
+        console.log(lights);
+
         this.$router.push({ name: "Home" });
         return;
       }
@@ -115,7 +128,7 @@ export default {
       this.errorMsg = "Please fill all the fields";
       return;
     },
-  }
+  },
 };
 </script>
 

@@ -6,6 +6,8 @@ import Register from "@/views/Register.vue";
 import Login from "@/views/Login.vue";
 import ForgotPassword from "@/views/ForgotPassword.vue";
 import Lights from "@/views/Lights.vue";
+import Profile from "@/views/Profile.vue";
+import Admin from "@/views/Admin.vue";
 
 Vue.use(VueRouter);
 
@@ -56,6 +58,22 @@ const routes = [
     component: Lights,
     meta: {
       title: "Lights",
+    },
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Admin,
+    meta: {
+      title: "Admin",
+    },
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    meta: {
+      title: "Profile",
     },
   },
 ];

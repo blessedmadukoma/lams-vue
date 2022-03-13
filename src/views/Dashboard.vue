@@ -12,7 +12,8 @@
           /> -->
       </h4>
 
-      <p :firstName="firstName">{{ firstName }},</p>
+      <!-- <p :firstName="firstName">{{ firstName }},</p> -->
+      <p>{{ this.$store.state.profileFirstName }},</p>
     </div>
     <section>
       <div class="blue500">
@@ -28,7 +29,7 @@
             <!-- put switch inside here boss -->
             <div class="toggle">
               <label class="switch">
-                <input type="checkbox" v-model="editPost" />
+                <input type="checkbox" v-model="editLight1" />
                 <span class="slider"></span>
               </label>
             </div>
@@ -42,7 +43,7 @@
             <!-- put switch inside here boss  -->
             <div class="toggle">
               <label class="switch">
-                <input type="checkbox" v-model="editPost" />
+                <input type="checkbox" v-model="editLight2" />
                 <span class="slider"></span>
               </label>
             </div>
@@ -68,7 +69,7 @@ export default {
   // props: ["showSun"],
   data() {
     return {
-      firstName: "Daniel",
+      // firstName: this.$store.state.profileFirstName,
       showSun: null,
     };
   },
@@ -94,14 +95,24 @@ export default {
   created() {
   },
   computed: {
-    editPost: {
+    editLight1: {
       get() {
-        return this.$store.state.editPost;
+        return this.$store.state.editLight1;
       },
       // change the value
       set(payload) {
         // payload is the value being returned: either true or false
-        this.$store.commit("toggleLight", payload);
+        this.$store.commit("toggleLight1", payload);
+      },
+    },
+    editLight2: {
+      get() {
+        return this.$store.state.editLight2;
+      },
+      // change the value
+      set(payload) {
+        // payload is the value being returned: either true or false
+        this.$store.commit("toggleLight2", payload);
       },
     },
   },
