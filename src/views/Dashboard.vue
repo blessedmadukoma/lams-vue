@@ -29,7 +29,11 @@
             <!-- put switch inside here boss -->
             <div class="toggle">
               <label class="switch">
-                <input type="checkbox" v-model="editLight1" />
+                <input
+                  type="checkbox"
+                  @click="editLight1"
+                  v-model="light1Computed"
+                />
                 <span class="slider"></span>
               </label>
             </div>
@@ -43,7 +47,8 @@
             <!-- put switch inside here boss  -->
             <div class="toggle">
               <label class="switch">
-                <input type="checkbox" v-model="editLight2" />
+                <input type="checkbox" @click="editLight2"
+                  v-model="light2Computed" />
                 <span class="slider"></span>
               </label>
             </div>
@@ -59,6 +64,12 @@
 // import womanIcon from "@/assets/Icons/womanbulb.svg";
 import sun from "@/assets/Icons/sun.svg";
 import moon from "@/assets/Icons/moon.svg";
+
+// firebase
+// import firebase from "firebase/app";
+import "firebase/auth";
+// import db from "@/firebase/firebaseInit";
+
 export default {
   name: "Dashboard",
   components: {
@@ -66,11 +77,10 @@ export default {
     sun,
     moon,
   },
-  // props: ["showSun"],
   data() {
     return {
-      // firstName: this.$store.state.profileFirstName,
       showSun: null,
+      // checked: null,
     };
   },
   methods: {
@@ -91,28 +101,35 @@ export default {
 
       return message;
     },
+
+    async editLight1() {
+      this.$store.dispatch("updateLight1state");
+    },
+    editLight2() {
+      this.$store.dispatch("updateLight2state");
+    },
   },
-  created() {
-  },
+  // mounted() {
+  //   this.checked = this.light1Computed;
+  // },
+  created() {},
   computed: {
-    editLight1: {
+    light1Computed: {
       get() {
-        return this.$store.state.editLight1;
+        return this.$store.state.light1state;
       },
       // change the value
-      set(payload) {
+      set() {
         // payload is the value being returned: either true or false
-        this.$store.commit("toggleLight1", payload);
       },
     },
-    editLight2: {
+    light2Computed: {
       get() {
-        return this.$store.state.editLight2;
+        return this.$store.state.light2state;
       },
       // change the value
-      set(payload) {
+      set() {
         // payload is the value being returned: either true or false
-        this.$store.commit("toggleLight2", payload);
       },
     },
   },

@@ -108,18 +108,11 @@ export default {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
+          light1: "Light 1",
+          light1state: true,
+          light2: "Light 2",
+          light2state: false,
         });
-
-        const lights = db.collection("lights").doc(result.user.uid); // getting the ID of the result
-        await lights.set({
-          name: "Light 1",
-          state: true,
-        });
-        await lights.set({
-          name: "Light 2",
-          state: false,
-        });
-        console.log(lights);
 
         this.$router.push({ name: "Home" });
         return;
