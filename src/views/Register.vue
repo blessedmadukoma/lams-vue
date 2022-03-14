@@ -112,6 +112,12 @@ export default {
           light1state: true,
           light2: "Light 2",
           light2state: false,
+          // currentPower1: 0.0,
+          // currentTime1: 0.0,
+          // currentPower2: 0.0,
+          // currentTime2: 0.0,
+          // totalPowerUsed: 0.0,
+          // totalTime: 0.0,
         });
 
         this.$router.push({ name: "Home" });
