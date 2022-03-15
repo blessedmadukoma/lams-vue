@@ -11,10 +11,10 @@
       </div>
       <div class="nav-links">
         <ul v-show="!mobile">
-          <router-link class="link" :to="{ name: 'Dashboard' }"
+          <router-link class="link" v-if="user" :to="{ name: 'Dashboard' }"
             >Dashboard</router-link
           >
-          <router-link class="link" :to="{ name: 'Lights' }"
+          <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
             >Lights</router-link
           >
           <router-link class="link" v-if="!user" :to="{ name: 'Register' }"
@@ -24,7 +24,7 @@
             >Sign in</router-link
           >
         </ul>
-        <div v-if="user" @click.prevent="toggleProfileMenu" class="profile" ref="profile">
+        <div v-if="user" v-show="!mobile" @click.prevent="toggleProfileMenu" class="profile" ref="profile">
           <span>{{ this.$store.state.profileInitials }}</span>
           <div v-show="profileMenu" class="profile-menu">
             <div class="info">
@@ -63,13 +63,19 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <!-- If the person is not signed in: do this on -->
-        <router-link class="link" :to="{ name: 'Dashboard' }"
+        <router-link class="link" v-if="user" :to="{ name: 'Dashboard' }"
           >Dashboard</router-link
         >
-        <router-link class="link" :to="{ name: 'Register' }"
+        <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
+          >Lights</router-link
+        >
+        <router-link class="link" v-if="user" :to="{ name: 'Sign out' }"
+          >Sign out</router-link
+        >
+        <router-link class="link" v-if="!user" :to="{ name: 'Register' }"
           >Sign up</router-link
         >
-        <router-link class="link" :to="{ name: 'Login' }">Sign in</router-link>
+        <router-link class="link" v-if="!user" :to="{ name: 'Login' }">Sign in</router-link>
 
         <!-- If the person is signed in, do this: -->
         <!-- <router-link class="link" to="#">Home</router-link>
@@ -130,6 +136,7 @@ export default {
     signOut() {
       firebase.auth().signOut();
       window.location.reload();
+      // redirect user to log in page
     },
   },
   computed: {

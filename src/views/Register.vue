@@ -7,38 +7,41 @@
       </div>
       <br /><br />
       <div class="inputs">
-        <label>First Name:</label>
+        <label><span style="color: red">*</span>First Name:</label>
         <div class="input" style="padding: 5px 0">
           <input
             type="text"
             placeholder="Enter first name..."
             v-model="firstName"
+            required
           />
           <user class="icon" />
         </div>
         <div style="padding: 6px 0"></div>
-        <label>Last Name:</label>
+        <label><span style="color: red">*</span>Last Name:</label>
         <div class="input" style="padding: 5px 0">
           <input
             type="text"
             placeholder="Enter last name..."
             v-model="lastName"
+            required
           />
           <user class="icon" />
         </div>
         <div style="padding: 6px 0"></div>
-        <label>Email:</label>
+        <label><span style="color: red">*</span>Email:</label>
         <div class="input" style="padding: 5px 0">
           <input type="text" placeholder="Enter Email..." v-model="email" />
           <email class="icon" />
         </div>
         <div style="padding: 6px 0"></div>
-        <label>Password:</label>
+        <label><span style="color: red">*</span>Password:</label>
         <div class="input" style="padding: 5px 0">
           <input
             type="password"
             placeholder="Enter Password..."
             v-model="password"
+            required
           />
           <password class="icon" />
         </div>
