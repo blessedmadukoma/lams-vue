@@ -11,7 +11,7 @@
       </div>
       <div class="nav-links">
         <ul v-show="!mobile">
-          <router-link class="link" v-if="user" :to="{ name: 'Dashboard' }"
+          <router-link class="link" v-if="user" :to="{ name: 'Home' }"
             >Dashboard</router-link
           >
           <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
@@ -24,7 +24,13 @@
             >Sign in</router-link
           >
         </ul>
-        <div v-if="user" v-show="!mobile" @click.prevent="toggleProfileMenu" class="profile" ref="profile">
+        <div
+          v-if="user"
+          v-show="!mobile"
+          @click.prevent="toggleProfileMenu"
+          class="profile"
+          ref="profile"
+        >
           <span>{{ this.$store.state.profileInitials }}</span>
           <div v-show="profileMenu" class="profile-menu">
             <div class="info">
@@ -63,19 +69,19 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <!-- If the person is not signed in: do this on -->
-        <router-link class="link" v-if="user" :to="{ name: 'Dashboard' }"
+        <router-link class="link" v-if="user" :to="{ name: 'Home' }"
           >Dashboard</router-link
         >
         <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
           >Lights</router-link
         >
-        <router-link class="link" v-if="user" :to="{ name: 'Sign out' }"
-          >Sign out</router-link
-        >
+        <p class="link" @click="signOut">Sign out</p>
         <router-link class="link" v-if="!user" :to="{ name: 'Register' }"
           >Sign up</router-link
         >
-        <router-link class="link" v-if="!user" :to="{ name: 'Login' }">Sign in</router-link>
+        <router-link class="link" v-if="!user" :to="{ name: 'Login' }"
+          >Sign in</router-link
+        >
 
         <!-- If the person is signed in, do this: -->
         <!-- <router-link class="link" to="#">Home</router-link>
@@ -142,8 +148,8 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
-    }
-  }
+    },
+  },
 };
 </script>
 
