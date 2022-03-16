@@ -14,15 +14,18 @@
           <span>admin</span>
         </div>
         <div class="input">
-          <label for="firstName">First Name:</label> 
+          <label for="firstName"><span style="color: red;">*</span> First Name: <span style="float: right;">(can be edited)</span></label> 
+          
           <input type="text" id="firstName" v-model="firstName" />
         </div>
         <div class="input">
-          <label for="lastName">Last Name:</label>
+          <label for="lastName"><span style="color: red;">*</span> Last Name: <span style="float: right;">(can be edited)</span></label>
           <input type="text" id="lastName" v-model="lastName" />
         </div>
         <div class="input">
-          <label for="email">Email:</label>
+          <label for="email">Email: <div style="float: right;">
+            <span>(</span><span style="color: red;">cannot</span><span> be edited)</span>
+            </div></label>
           <input disabled type="text" id="email" v-model="email" />
         </div>
         <button @click="updateProfile">Save Changes</button>

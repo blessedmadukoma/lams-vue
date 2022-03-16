@@ -13,26 +13,28 @@
         >
       </p>
       <div class="inputs">
-        <label>Email:</label>
+        <label><span style="color: red">*</span> Email:</label>
         <div class="input" style="padding: 2px 0">
           <input
             type="text"
             placeholder="Enter your email..."
             v-model="email"
+            required
           />
           <email class="icon" />
         </div>
         <div style="padding: 6px 0"></div>
-        <label>Password:</label>
+        <label><span style="color: red">*</span> Password:</label>
         <div class="input" style="padding: 2px 0">
           <input
             type="password"
             placeholder="Enter your password..."
             v-model="password"
+            required
           />
           <password class="icon" />
         </div>
-        <div class="error" v-show="error">{{ this.error }}</div>
+        <div class="error" v-show="error">{{ this.errorMsg }}</div>
       </div>
       <router-link class="forgot-password" :to="{ name: 'ForgotPassword' }"
         >Forgot your password?</router-link
@@ -59,12 +61,14 @@ export default {
   },
   data() {
     return {
-      email: null,
-      password: null,
+      email: "",
+      password: "",
+      error: null,
+      errorMsg: "",
     };
   },
   methods: {
-    signIn() {
+    async signIn() {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
@@ -72,14 +76,23 @@ export default {
           this.$router.push({ name: "Home" });
           this.error = false;
           this.errorMsg = "";
-          console.log(firebase.auth().currentUser.uid);
+          // console.log(firebase.auth().currentUser.uid);
         })
         .catch((err) => {
+          if (this.email == "" && this.password == "") {
+            this.errorMsg = "Empty email and password fields!"
+          } else if (this.email == "") {
+            this.errorMsg = "Empty email field!"
+          } else if (this.password == "") {
+            this.errorMsg = "Empty password field!"
+          } else {
+            this.errorMsg = err.message;
+          }
           this.error = true;
-          this.errorMsg = err.message;
+          // this.errorMsg = err.message;
         });
     },
-  }
+  },
 };
 </script>
 

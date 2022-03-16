@@ -75,7 +75,10 @@
         <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
           >Lights</router-link
         >
-        <p class="link" @click="signOut">Sign out</p>
+        <router-link v-if="user" :to="{ name: 'Profile' }" class="link">
+          <p>Profile</p>
+        </router-link>
+        <p class="link" v-if="user" @click="signOut">Sign out</p>
         <router-link class="link" v-if="!user" :to="{ name: 'Register' }"
           >Sign up</router-link
         >

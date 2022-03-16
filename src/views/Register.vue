@@ -112,9 +112,11 @@ export default {
           lastName: this.lastName,
           email: this.email,
           light1: "Light 1",
-          light1state: true,
+          light1state: false,
+          light1Tag: "switch1off",
           light2: "Light 2",
           light2state: false,
+          light2Tag: "switch2off"
           // currentPower1: 0.0,
           // currentTime1: 0.0,
           // currentPower2: 0.0,

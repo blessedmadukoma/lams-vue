@@ -73,7 +73,7 @@ export default new Vuex.Store({
       // state.totalPowerUsed = doc.data().totalPowerUsed;
       // state.totalTime = doc.data().totalTime;
     },
-    
+
     setProfileInitials(state) {
       state.profileInitials =
         state.profileFirstName.match(/(\b\S)?/g).join("") +
@@ -106,23 +106,48 @@ export default new Vuex.Store({
     },
 
     async updateLight1state({ commit, state }) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
-      await dataBase.update({
-        light1state: !state.light1state,
-      });
-      commit("setToggleLight1", !state.light1state);
+      // console.log("State opposite: ", !state.light1state);
+      if (!state.light1state == true) {
+        const dataBase = await db
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid);
+        await dataBase.update({
+          light1state: !state.light1state,
+          light1Tag: "switch1on",
+        });
+        commit("setToggleLight1", !state.light1state);
+      } else {
+        const dataBase = await db
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid);
+        await dataBase.update({
+          light1state: !state.light1state,
+          light1Tag: "switch1off",
+        });
+        commit("setToggleLight1", !state.light1state);
+      }
     },
 
     async updateLight2state({ commit, state }) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
-      await dataBase.update({
-        light2state: !state.light2state,
-      });
-      commit("setToggleLight2", !state.light2state);
+      if (!state.light2state == true) {
+        const dataBase = await db
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid);
+        await dataBase.update({
+          light2state: !state.light2state,
+          light2Tag: "switch2on",
+        });
+        commit("setToggleLight2", !state.light2state);
+      } else {
+        const dataBase = await db
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid);
+        await dataBase.update({
+          light2state: !state.light2state,
+          light2Tag: "switch2off",
+        });
+        commit("setToggleLight2", !state.light2state);
+      }
     },
 
     async updateLight1Name({ commit, state }) {
@@ -134,7 +159,7 @@ export default new Vuex.Store({
       });
       commit("setLight1Name", state.light1);
     },
-    
+
     async updateLight2Name({ commit, state }) {
       const dataBase = await db
         .collection("users")
@@ -143,7 +168,7 @@ export default new Vuex.Store({
         light2: state.light2,
       });
       commit("setLight2Name", state.light2);
-    }
+    },
   },
   modules: {},
 });

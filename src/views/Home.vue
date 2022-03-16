@@ -1,89 +1,92 @@
 <template>
   <div>
-    <div v-show="!user" class="no-user grid">
-    <div class="content">
-      <div>
-        <br /><br /><br />
-        <h2>Control your lights <span class="easily">easily</span></h2>
+    <div v-if="!user" class="no-user grid">
+      <div class="content">
+        <div>
+          <br /><br /><br />
+          <h2>Control your lights <span class="easily">easily</span></h2>
+          <br />
+          <h4 style="width: 90%">
+            Making light management easier, faster and better
+          </h4>
+        </div>
         <br />
-        <h4 style="width: 90%">
-          Making light management easier, faster and better
-        </h4>
+        <router-link :to="{ name: 'Register' }"
+          ><button class="signup-button">Sign up</button></router-link
+        >
+        <br />
+        <router-link :to="{ name: 'Login' }"
+          ><button class="login-button">Sign in</button></router-link
+        >
       </div>
-      <br />
-      <router-link :to="{ name: 'Register' }"
-        ><button class="signup-button">Sign up</button></router-link
-      >
-      <br />
-      <router-link :to="{ name: 'Login' }"
-        ><button class="login-button">Sign in</button></router-link
-      >
-    </div>
-    <div><img class="woman" src="../assets/Icons/woman.png" alt="" /></div>
+      <div><img class="woman" src="../assets/Icons/woman.png" alt="" /></div>
 
-    <!-- <div class="img">
+      <!-- <div class="img">
       <womanIcon />
     </div> -->
-  </div>
-  <div v-show="user">
-    <div class="greetingsArea">
-      <h4>
-        {{ currentDateTime() }}
-        <sun v-if="showSun" />
-        <moon v-else />
-        <!-- <img
+    </div>
+    <div v-else>
+      <div class="greetingsArea">
+        <h4>
+          {{ currentDateTime() }}
+          <sun v-if="showSun" />
+          <moon v-else />
+          <!-- <img
             src="../assets/sun.png"
             alt=""
             style="width: 35px; height: 35px"
           /> -->
-      </h4>
+        </h4>
 
-      <!-- <p :firstName="firstName">{{ firstName }},</p> -->
-      <p>{{ this.$store.state.profileFirstName }},</p>
+        <!-- <p :firstName="firstName">{{ firstName }},</p> -->
+        <p>{{ this.$store.state.profileFirstName }},</p>
+      </div>
+      <section>
+        <div class="blue500">
+          <p>Total Power Used</p>
+          <p><b>500.0</b> Watt</p>
+        </div>
+
+        <div class="lights">
+          <h4>LIGHTS</h4>
+          <div class="lightSwitchButton">
+            <div class="light-name">Light 1</div>
+            <div class="switchContainer">
+              <!-- put switch inside here boss -->
+              <div class="toggle">
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="editLight1"
+                    v-model="light1Computed"
+                  />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div><button class="view">View</button></div>
+          </div>
+
+          <div class="lightSwitchButton">
+            <div class="light-name">Light 2</div>
+            <div class="switchContainer">
+              <!-- put switch inside here boss  -->
+              <div class="toggle">
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="editLight2"
+                    v-model="light2Computed"
+                  />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div><button class="view">View</button></div>
+          </div>
+        </div>
+      </section>
     </div>
-    <section>
-      <div class="blue500">
-        <p>Total Power Used</p>
-        <p><b>500.0</b> Watt</p>
-      </div>
-
-      <div class="lights">
-        <h4>LIGHTS</h4>
-        <div class="lightSwitchButton">
-          <div class="light-name">Light 1</div>
-          <div class="switchContainer">
-            <!-- put switch inside here boss -->
-            <div class="toggle">
-              <label class="switch">
-                <input
-                  type="checkbox"
-                  @click="editLight1"
-                  v-model="light1Computed"
-                />
-                <span class="slider"></span>
-              </label>
-            </div>
-          </div>
-          <div><button class="view">View</button></div>
-        </div>
-
-        <div class="lightSwitchButton">
-          <div class="light-name">Light 2</div>
-          <div class="switchContainer">
-            <!-- put switch inside here boss  -->
-            <div class="toggle">
-              <label class="switch">
-                <input type="checkbox" @click="editLight2"
-                  v-model="light2Computed" />
-                <span class="slider"></span>
-              </label>
-            </div>
-          </div>
-          <div><button class="view">View</button></div>
-        </div>
-      </div>
-    </section>
-  </div>
   </div>
 </template>
 
@@ -101,7 +104,7 @@ export default {
   name: "Home",
   components: {
     sun,
-    moon
+    moon,
   },
   data() {
     return {
@@ -228,7 +231,6 @@ h2 {
   font-weight: semibold;
   cursor: pointer;
 }
-
 
 // Dashboard styling
 * {
@@ -391,7 +393,7 @@ button.view {
   border-radius: 6px;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 870px) {
   html,
   body {
     position: relative;
