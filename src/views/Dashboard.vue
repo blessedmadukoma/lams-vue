@@ -47,8 +47,11 @@
             <!-- put switch inside here boss  -->
             <div class="toggle">
               <label class="switch">
-                <input type="checkbox" @click="editLight2"
-                  v-model="light2Computed" />
+                <input
+                  type="checkbox"
+                  @click="editLight2"
+                  v-model="light2Computed"
+                />
                 <span class="slider"></span>
               </label>
             </div>
