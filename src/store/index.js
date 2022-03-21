@@ -23,11 +23,11 @@ export default new Vuex.Store({
     light2state: null,
 
     // remaining stuff for the lights
-    currentPower1: null,
+    currentEnergy1: null,
     currentTime1: null,
-    currentPower2: null,
+    currentEnergy2: null,
     currentTime2: null,
-    totalPowerUsed: null,
+    totalEnergyUsed: null,
     totalTime: null,
   },
 
@@ -66,12 +66,12 @@ export default new Vuex.Store({
       state.light2state = doc.data().light2state;
 
       // add these when you have the functions ready
-      // state.currentPower1 = doc.data().currentPower1;
-      // state.currentTime1 = doc.data().currentTime1;
-      // state.currentPower2 = doc.data().currentPower2;
-      // state.currentTime2 = doc.data().currentTime2;
-      // state.totalPowerUsed = doc.data().totalPowerUsed;
-      // state.totalTime = doc.data().totalTime;
+      state.currentEnergy1 = doc.data().currentEnergy1;
+      state.currentTime1 = doc.data().currentTime1;
+      state.currentEnergy2 = doc.data().currentEnergy2;
+      state.currentTime2 = doc.data().currentTime2;
+      state.totalEnergyUsed = doc.data().totalEnergyUsed;
+      state.totalTime = doc.data().totalTime;
     },
 
     setProfileInitials(state) {

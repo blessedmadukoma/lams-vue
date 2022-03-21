@@ -43,8 +43,11 @@
       </div>
       <section>
         <div class="blue500">
-          <p>Total Power Used</p>
-          <p><b>500.0</b> Watt</p>
+          <p>Total Energy Used</p>
+          <!-- <p><b>500.0</b> Watt</p> -->
+          <p>
+            <b>{{ this.$store.state.totalEnergyUsed }}</b> kg/hr
+          </p>
         </div>
 
         <div class="lights">
@@ -64,7 +67,11 @@
                 </label>
               </div>
             </div>
-            <div><button class="view">View</button></div>
+            <div>
+              <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              >
+            </div>
           </div>
 
           <div class="lightSwitchButton">
@@ -82,7 +89,11 @@
                 </label>
               </div>
             </div>
-            <div><button class="view">View</button></div>
+            <div>
+              <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              >
+            </div>
           </div>
         </div>
       </section>

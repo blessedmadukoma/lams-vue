@@ -116,13 +116,13 @@ export default {
           light1Tag: "switch1off",
           light2: "Light 2",
           light2state: false,
-          light2Tag: "switch2off"
-          // currentPower1: 0.0,
-          // currentTime1: 0.0,
-          // currentPower2: 0.0,
-          // currentTime2: 0.0,
-          // totalPowerUsed: 0.0,
-          // totalTime: 0.0,
+          light2Tag: "switch2off",
+          currentEnergy1: 0.0,
+          currentTime1: 0.0,
+          currentEnergy2: 0.0,
+          currentTime2: 0.0,
+          totalEnergyUsed: 0.0,
+          totalTime: 0.0,
         });
 
         this.$router.push({ name: "Home" });
