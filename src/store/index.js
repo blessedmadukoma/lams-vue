@@ -56,22 +56,38 @@ export default new Vuex.Store({
     },
 
     setProfileInfo(state, doc) {
+      // state.profileID = doc.id;
+      // state.profileEmail = doc.data().email;
+      // state.profileFirstName = doc.data().firstName;
+      // state.profileLastName = doc.data().lastName;
+      // state.light1 = doc.data().light1;
+      // state.light1state = doc.data().light1state;
+      // state.light2 = doc.data().light2;
+      // state.light2state = doc.data().light2state;
+
+      // // add these when you have the functions ready
+      // state.currentEnergy1 = doc.data().currentEnergy1;
+      // state.currentTime1 = doc.data().currentTime1;
+      // state.currentEnergy2 = doc.data().currentEnergy2;
+      // state.currentTime2 = doc.data().currentTime2;
+      // state.totalEnergyUsed = doc.data().totalEnergyUsed;
+      // state.totalTime = doc.data().totalTime;
       state.profileID = doc.id;
-      state.profileEmail = doc.data().email;
-      state.profileFirstName = doc.data().firstName;
-      state.profileLastName = doc.data().lastName;
-      state.light1 = doc.data().light1;
-      state.light1state = doc.data().light1state;
-      state.light2 = doc.data().light2;
-      state.light2state = doc.data().light2state;
+      state.profileEmail = doc.ref("users").email;
+      state.profileFirstName = doc.ref("users").firstName;
+      state.profileLastName = doc.ref("users").lastName;
+      state.light1 = doc.ref("users").light1;
+      state.light1state = doc.ref("users").light1state;
+      state.light2 = doc.ref("users").light2;
+      state.light2state = doc.ref("users").light2state;
 
       // add these when you have the functions ready
-      state.currentEnergy1 = doc.data().currentEnergy1;
-      state.currentTime1 = doc.data().currentTime1;
-      state.currentEnergy2 = doc.data().currentEnergy2;
-      state.currentTime2 = doc.data().currentTime2;
-      state.totalEnergyUsed = doc.data().totalEnergyUsed;
-      state.totalTime = doc.data().totalTime;
+      state.currentEnergy1 = doc.ref("users").currentEnergy1;
+      state.currentTime1 = doc.ref("users").currentTime1;
+      state.currentEnergy2 = doc.ref("users").currentEnergy2;
+      state.currentTime2 = doc.ref("users").currentTime2;
+      state.totalEnergyUsed = doc.ref("users").totalEnergyUsed;
+      state.totalTime = doc.ref("users").totalTime;
     },
 
     setProfileInitials(state) {
@@ -88,16 +104,19 @@ export default new Vuex.Store({
   },
   actions: {
     async getCurrentUser({ commit }) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
+      // const dataBase = await db
+      //   .collection("users")
+      //   .doc(firebase.auth().currentUser.uid);
+      const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
       const dbResults = await dataBase.get();
       commit("setProfileInfo", dbResults);
       commit("setProfileInitials");
     },
 
     async updateUserSettings({ commit, state }) {
-      const dataBase = await db.collection("users").doc(state.profileID);
+      // const dataBase = await db.collection("users").doc(state.profileID);
+      
+      const dataBase = await db.ref(`/users/${state.profileID}`);
       await dataBase.update({
         firstName: state.profileFirstName,
         lastName: state.profileLastName,
@@ -108,18 +127,20 @@ export default new Vuex.Store({
     async updateLight1state({ commit, state }) {
       // console.log("State opposite: ", !state.light1state);
       if (!state.light1state == true) {
-        const dataBase = await db
-          .collection("users")
-          .doc(firebase.auth().currentUser.uid);
+        // const dataBase = await db
+        //   .collection("users")
+        //   .doc(firebase.auth().currentUser.uid);
+        const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
         await dataBase.update({
           light1state: !state.light1state,
           light1Tag: "switch1on",
         });
         commit("setToggleLight1", !state.light1state);
       } else {
-        const dataBase = await db
-          .collection("users")
-          .doc(firebase.auth().currentUser.uid);
+        // const dataBase = await db
+        //   .collection("users")
+        //   .doc(firebase.auth().currentUser.uid);
+        const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
         await dataBase.update({
           light1state: !state.light1state,
           light1Tag: "switch1off",
@@ -130,18 +151,20 @@ export default new Vuex.Store({
 
     async updateLight2state({ commit, state }) {
       if (!state.light2state == true) {
-        const dataBase = await db
-          .collection("users")
-          .doc(firebase.auth().currentUser.uid);
+        // const dataBase = await db
+        //   .collection("users")
+        //   .doc(firebase.auth().currentUser.uid);
+        const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
         await dataBase.update({
           light2state: !state.light2state,
           light2Tag: "switch2on",
         });
         commit("setToggleLight2", !state.light2state);
       } else {
-        const dataBase = await db
-          .collection("users")
-          .doc(firebase.auth().currentUser.uid);
+        // const dataBase = await db
+        //   .collection("users")
+        //   .doc(firebase.auth().currentUser.uid);
+        const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
         await dataBase.update({
           light2state: !state.light2state,
           light2Tag: "switch2off",
@@ -151,9 +174,10 @@ export default new Vuex.Store({
     },
 
     async updateLight1Name({ commit, state }) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
+      // const dataBase = await db
+      //   .collection("users")
+      //   .doc(firebase.auth().currentUser.uid);
+      const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
       await dataBase.update({
         light1: state.light1,
       });
@@ -161,9 +185,10 @@ export default new Vuex.Store({
     },
 
     async updateLight2Name({ commit, state }) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
+      // const dataBase = await db
+      //   .collection("users")
+      //   .doc(firebase.auth().currentUser.uid);
+      const dataBase = await db.ref(`/users/${firebase.auth().currentUser.uid}`)
       await dataBase.update({
         light2: state.light2,
       });

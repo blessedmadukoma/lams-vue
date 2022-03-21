@@ -106,7 +106,8 @@ export default {
         const result = await createUser;
 
         // reach out to firebase collection to get our users -> if it doesn't exist, it creates a new one
-        const dataBase = db.collection("users").doc(result.user.uid); // getting the ID of the result
+        // const dataBase = db.collection("users").doc(result.user.uid); // getting the ID of the result
+        const dataBase = db.ref(`/users/${result.user.uid}`); // getting the ID of the result
         await dataBase.set({
           firstName: this.firstName,
           lastName: this.lastName,
