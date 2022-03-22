@@ -6,6 +6,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCjYLqYV9e-DhT8lOS-UzWzEnv_66E4WD0",
   authDomain: "lams-vue.firebaseapp.com",
   projectId: "lams-vue",
+  databaseURL: "https://lams-vue-default-rtdb.europe-west1.firebasedatabase.app",
   storageBucket: "lams-vue.appspot.com",
   messagingSenderId: "11255647639",
   appId: "1:11255647639:web:774585f038f54728c4c8d2",

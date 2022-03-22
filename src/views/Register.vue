@@ -89,7 +89,7 @@ export default {
   methods: {
     // Registration function
     async register() {
-      console.log("Email:", this.email);
+      // console.log("Email:", this.email);
       if (
         this.email !== "" &&
         this.firstName !== "" &&
