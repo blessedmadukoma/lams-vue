@@ -105,13 +105,8 @@ export default {
         );
         const result = await createUser;
 
-        // reach out to firebase collection to get our users -> if it doesn't exist, it creates a new one
-        // const dataBase = db.collection("users").doc(result.user.uid); // getting the ID of the result
-        const dataBase = db.ref(`/users/${result.user.uid}`); // getting the ID of the result
-        await dataBase.set({
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
+        const lightChannel = db.ref();
+        await lightChannel.set({
           light1: "Light 1",
           light1state: false,
           light1Tag: "switch1off",
@@ -125,8 +120,18 @@ export default {
           totalEnergyUsed: 0.0,
           totalTime: 0.0,
         });
+        // reach out to firebase collection to get our users -> if it doesn't exist, it creates a new one
+        // const dataBase = db.collection("users").doc(result.user.uid); // getting the ID of the result
+        const dataBase = db.ref(`/users/${result.user.uid}`); // getting the ID of the result
+        await dataBase.set({
+          ID: result.user.uid,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+        });
 
-        this.$router.push({ name: "Home" });
+        // this.$router.push({ name: "Home" });
+        this.$router.push({ name: "Login" });
         return;
       }
       this.error = true;

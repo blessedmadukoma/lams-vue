@@ -46,7 +46,7 @@
           <p>Total Energy Used</p>
           <!-- <p><b>500.0</b> Watt</p> -->
           <p>
-            <b>{{ this.$store.state.totalEnergyUsed }}</b> kg/hr
+            <b>{{ this.$store.state.totalEnergyUsed }}</b> Kw/hr
           </p>
         </div>
 

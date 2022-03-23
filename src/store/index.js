@@ -80,9 +80,10 @@ export default new Vuex.Store({
 
       // console.log(db.getValue());
       state.profileID = firebase.auth().currentUser.uid;
-      state.profileEmail = doc.email;
-      state.profileFirstName = doc.firstName;
-      state.profileLastName = doc.lastName;
+      // console.log("email: " ,doc.users[state.profileID].email);
+      state.profileEmail = doc.users[state.profileID].email;
+      state.profileFirstName = doc.users[state.profileID].firstName;
+      state.profileLastName = doc.users[state.profileID].lastName;
       state.light1 = doc.light1;
       state.light1state = doc.light1state;
       state.light2 = doc.light2;
@@ -118,19 +119,21 @@ export default new Vuex.Store({
       // commit("setProfileInfo", snapshot.val());
       // commit("setProfileInitials");
 
-      let userID = firebase.auth().currentUser.uid;
+      // let userID = firebase.auth().currentUser.uid;
       const dbRef = firebase.database().ref();
 
       // wait for 3 seconds -> to load everything
       sleep(3000);
-
+      // dbRef
+      //   .child("users")
+      //   .child(userID)
+      //   .get()
       dbRef
-        .child("users")
-        .child(userID)
         .get()
         .then((snapshot) => {
           if (snapshot.exists()) {
             // console.log(snapshot.val());
+            console.log(snapshot.val());
             commit("setProfileInfo", snapshot.val());
             commit("setProfileInitials");
           } else {
@@ -160,9 +163,10 @@ export default new Vuex.Store({
         // const dataBase = await db
         //   .collection("users")
         //   .doc(firebase.auth().currentUser.uid);
-        const dataBase = await db.ref(
-          `/users/${firebase.auth().currentUser.uid}`
-        );
+        // const dataBase = await db.ref(
+        //   `/users/${firebase.auth().currentUser.uid}`
+        // );
+        const dataBase = await db.ref();
         await dataBase.update({
           light1state: !state.light1state,
           light1Tag: "switch1on",
@@ -172,9 +176,10 @@ export default new Vuex.Store({
         // const dataBase = await db
         //   .collection("users")
         //   .doc(firebase.auth().currentUser.uid);
-        const dataBase = await db.ref(
-          `/users/${firebase.auth().currentUser.uid}`
-        );
+        // const dataBase = await db.ref(
+        //   `/users/${firebase.auth().currentUser.uid}`
+        // );
+        const dataBase = await db.ref();
         await dataBase.update({
           light1state: !state.light1state,
           light1Tag: "switch1off",
@@ -188,9 +193,10 @@ export default new Vuex.Store({
         // const dataBase = await db
         //   .collection("users")
         //   .doc(firebase.auth().currentUser.uid);
-        const dataBase = await db.ref(
-          `/users/${firebase.auth().currentUser.uid}`
-        );
+        // const dataBase = await db.ref(
+        //   `/users/${firebase.auth().currentUser.uid}`
+        // );
+        const dataBase = await db.ref();
         await dataBase.update({
           light2state: !state.light2state,
           light2Tag: "switch2on",
@@ -200,9 +206,10 @@ export default new Vuex.Store({
         // const dataBase = await db
         //   .collection("users")
         //   .doc(firebase.auth().currentUser.uid);
-        const dataBase = await db.ref(
-          `/users/${firebase.auth().currentUser.uid}`
-        );
+        // const dataBase = await db.ref(
+        //   `/users/${firebase.auth().currentUser.uid}`
+        // );
+        const dataBase = await db.ref();
         await dataBase.update({
           light2state: !state.light2state,
           light2Tag: "switch2off",
@@ -215,9 +222,10 @@ export default new Vuex.Store({
       // const dataBase = await db
       //   .collection("users")
       //   .doc(firebase.auth().currentUser.uid);
-      const dataBase = await db.ref(
-        `/users/${firebase.auth().currentUser.uid}`
-      );
+      // const dataBase = await db.ref(
+      //   `/users/${firebase.auth().currentUser.uid}`
+      // );
+      const dataBase = await db.ref();
       await dataBase.update({
         light1: state.light1,
       });
@@ -228,9 +236,10 @@ export default new Vuex.Store({
       // const dataBase = await db
       //   .collection("users")
       //   .doc(firebase.auth().currentUser.uid);
-      const dataBase = await db.ref(
-        `/users/${firebase.auth().currentUser.uid}`
-      );
+      // const dataBase = await db.ref(
+      //   `/users/${firebase.auth().currentUser.uid}`
+      // );
+      const dataBase = await db.ref();
       await dataBase.update({
         light2: state.light2,
       });
