@@ -418,7 +418,7 @@ button.view {
   border-radius: 6px;
 }
 
-@media (max-width: 870px) {
+@media (max-width: 860px) {
   html,
   body {
     position: relative;
@@ -443,7 +443,57 @@ button.view {
     position: relative;
     left: 0;
   }
+
+  button.view {
+  position: relative;
+  right: 5vw;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  font-size: 20px;
+  outline: none;
+  padding: 15px 20px;
+  border-radius: 6px;
 }
+}
+// @media (min-width: 200px) {
+//   html,
+//   body {
+//     position: relative;
+//   }
+
+//   section {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 100vw;
+//   }
+
+//   section .blue500 {
+//     width: 90vw;
+//     margin-bottom: 55px;
+//     position: relative;
+//     left: 0;
+//   }
+
+//   section .lights {
+//     width: 90vw;
+//     position: relative;
+//     left: 0;
+//   }
+
+//   button.view {
+//   position: relative;
+//   right: 5vw;
+//   background-color: transparent;
+//   border: 1px solid black;
+//   color: black;
+//   font-size: 20px;
+//   outline: none;
+//   padding: 15px 20px;
+//   border-radius: 6px;
+// }
+// }
 // Ends here
 
 // }

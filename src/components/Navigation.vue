@@ -288,7 +288,7 @@ header {
 
   .mobile-nav {
     padding: 20px;
-    width: 30%;
+    width: 35%;
     max-width: 250px;
     display: flex;
     flex-direction: column;
