@@ -45,9 +45,11 @@
         <div class="blue500">
           <p>Total Energy Used</p>
           <!-- <p><b>500.0</b> Watt</p> -->
-          <p>
-            <b>{{ this.$store.state.totalEnergyUsed }}</b> Kw/hr
-          </p>
+          <div id="refreshBlock">
+            <p >
+              <b>{{ this.$store.state.totalEnergyUsed }}</b> Kw/hr
+            </p>
+          </div>
         </div>
 
         <div class="lights">
@@ -111,6 +113,22 @@ import moon from "@/assets/Icons/moon.svg";
 import "firebase/auth";
 // import db from "@/firebase/firebaseInit";
 
+// import $ from "jQuery";
+// global.$ = jQuery;
+
+// $(window).on("load", function () {
+//   setInterval(
+//     `() => {
+//     $("#refreshBlock").load("#refreshBlock");
+//     let refreshDiv = document.getElementById("refreshBlock");
+//     console.log("Current value:", this.$store.state.totalEnergyUsed);
+//       refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
+//   };`,
+//     // `startTime()`,
+//     5000
+//   );
+// });
+
 export default {
   name: "Home",
   components: {
@@ -120,6 +138,7 @@ export default {
   data() {
     return {
       showSun: null,
+      timer: "",
       // checked: null,
     };
   },
@@ -145,11 +164,59 @@ export default {
     async editLight1() {
       this.$store.dispatch("updateLight1state");
     },
-    editLight2() {
+    async editLight2() {
       this.$store.dispatch("updateLight2state");
     },
+
+  //   refreshData() {
+  //     $(window).on("load", function () {
+  //       setInterval(
+  // //         `() => {
+  // //   $("#refreshBlock").load("#refreshBlock");
+  // //   let refreshDiv = document.getElementById("refreshBlock");
+  // //   console.log("Current value:", this.$store.state.totalEnergyUsed);
+  // //     refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
+  // // };`,
+  //         `startTime()`,
+  //         5000
+  //       );
+  //     });
+  //   },
+  //   startTime() {
+  //     $("#refreshBlock").load(" #refreshBlock");
+  //   },
+    // refresh() {
+    //   clearInterval(this.timer);
+    // },
+    // startTime() {
+    // //   document.getElementById("refreshBlock");
+    // // let refreshDiv = document.getElementById("refreshBlock");
+    // // refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
+    // console.log(this.$store.state.totalEnergyUsed);
+
+    // //   // refreshDiv.load('#refreshBlock');
+    // },
   },
-  created() {},
+  created() {
+  //   $(window).on("load", function () {
+  //     setInterval(
+  //       `() => {
+  //   $("#refreshBlock").load("#refreshBlock");
+  //   let refreshDiv = document.getElementById("refreshBlock");
+  //   console.log("Current value:", this.$store.state.totalEnergyUsed);
+  //     refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
+  // };`,
+  //       // `startTime()`,
+  //       5000
+  //     );
+  //   });
+  //   // this.timer = setInterval(this.startTime, 5000);
+  },
+
+  beforeDestroy() {
+    // this.refresh();
+  },
+
   computed: {
     user() {
       return this.$store.state.user;
