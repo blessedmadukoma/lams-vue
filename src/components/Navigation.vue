@@ -85,12 +85,6 @@
         <router-link class="link" v-if="!user" :to="{ name: 'Login' }"
           >Sign in</router-link
         >
-
-        <!-- If the person is signed in, do this: -->
-        <!-- <router-link class="link" to="#">Home</router-link>
-        <router-link class="link" to="#">Light</router-link>
-        <router-link class="link" to="#">Settings</router-link>
-        <router-link class="link" to="#">Logout</router-link> -->
       </ul>
     </transition>
   </header>

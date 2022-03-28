@@ -20,14 +20,6 @@ const routes = [
       title: "Home",
     },
   },
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   component: Dashboard,
-  //   meta: {
-  //     title: "Dashboard",
-  //   },
-  // },
   {
     path: "/register",
     name: "Register",

@@ -31,20 +31,13 @@
           {{ currentDateTime() }}
           <sun v-if="showSun" />
           <moon v-else />
-          <!-- <img
-            src="../assets/sun.png"
-            alt=""
-            style="width: 35px; height: 35px"
-          /> -->
         </h4>
 
-        <!-- <p :firstName="firstName">{{ firstName }},</p> -->
         <p>{{ this.$store.state.profileFirstName }},</p>
       </div>
       <section>
         <div class="blue500">
           <p>Total Energy Used</p>
-          <!-- <p><b>500.0</b> Watt</p> -->
           <div id="refreshBlock">
             <p >
               <b>{{ this.$store.state.totalEnergyUsed }}</b> Kw/hr
@@ -109,25 +102,7 @@ import sun from "@/assets/Icons/sun.svg";
 import moon from "@/assets/Icons/moon.svg";
 
 // firebase
-// import firebase from "firebase/app";
 import "firebase/auth";
-// import db from "@/firebase/firebaseInit";
-
-// import $ from "jQuery";
-// global.$ = jQuery;
-
-// $(window).on("load", function () {
-//   setInterval(
-//     `() => {
-//     $("#refreshBlock").load("#refreshBlock");
-//     let refreshDiv = document.getElementById("refreshBlock");
-//     console.log("Current value:", this.$store.state.totalEnergyUsed);
-//       refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
-//   };`,
-//     // `startTime()`,
-//     5000
-//   );
-// });
 
 export default {
   name: "Home",
@@ -168,34 +143,6 @@ export default {
       this.$store.dispatch("updateLight2state");
     },
 
-  //   refreshData() {
-  //     $(window).on("load", function () {
-  //       setInterval(
-  // //         `() => {
-  // //   $("#refreshBlock").load("#refreshBlock");
-  // //   let refreshDiv = document.getElementById("refreshBlock");
-  // //   console.log("Current value:", this.$store.state.totalEnergyUsed);
-  // //     refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
-  // // };`,
-  //         `startTime()`,
-  //         5000
-  //       );
-  //     });
-  //   },
-  //   startTime() {
-  //     $("#refreshBlock").load(" #refreshBlock");
-  //   },
-    // refresh() {
-    //   clearInterval(this.timer);
-    // },
-    // startTime() {
-    // //   document.getElementById("refreshBlock");
-    // // let refreshDiv = document.getElementById("refreshBlock");
-    // // refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
-    // console.log(this.$store.state.totalEnergyUsed);
-
-    // //   // refreshDiv.load('#refreshBlock');
-    // },
   },
   created() {
   //   $(window).on("load", function () {
