@@ -31,20 +31,18 @@
           {{ currentDateTime() }}
           <sun v-if="showSun" />
           <moon v-else />
-          <!-- <img
-            src="../assets/sun.png"
-            alt=""
-            style="width: 35px; height: 35px"
-          /> -->
         </h4>
 
-        <!-- <p :firstName="firstName">{{ firstName }},</p> -->
         <p>{{ this.$store.state.profileFirstName }},</p>
       </div>
       <section>
         <div class="blue500">
-          <p>Total Power Used</p>
-          <p><b>500.0</b> Watt</p>
+          <p>Total Energy Used</p>
+          <div id="refreshBlock">
+            <p >
+              <b>{{ this.$store.state.totalEnergyUsed }}</b> Kw/hr
+            </p>
+          </div>
         </div>
 
         <div class="lights">
@@ -64,7 +62,11 @@
                 </label>
               </div>
             </div>
-            <div><button class="view">View</button></div>
+            <div>
+              <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              >
+            </div>
           </div>
 
           <div class="lightSwitchButton">
@@ -82,7 +84,11 @@
                 </label>
               </div>
             </div>
-            <div><button class="view">View</button></div>
+            <div>
+              <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              >
+            </div>
           </div>
         </div>
       </section>
@@ -96,9 +102,7 @@ import sun from "@/assets/Icons/sun.svg";
 import moon from "@/assets/Icons/moon.svg";
 
 // firebase
-// import firebase from "firebase/app";
 import "firebase/auth";
-// import db from "@/firebase/firebaseInit";
 
 export default {
   name: "Home",
@@ -109,6 +113,7 @@ export default {
   data() {
     return {
       showSun: null,
+      timer: "",
       // checked: null,
     };
   },
@@ -134,11 +139,31 @@ export default {
     async editLight1() {
       this.$store.dispatch("updateLight1state");
     },
-    editLight2() {
+    async editLight2() {
       this.$store.dispatch("updateLight2state");
     },
+
   },
-  created() {},
+  created() {
+  //   $(window).on("load", function () {
+  //     setInterval(
+  //       `() => {
+  //   $("#refreshBlock").load("#refreshBlock");
+  //   let refreshDiv = document.getElementById("refreshBlock");
+  //   console.log("Current value:", this.$store.state.totalEnergyUsed);
+  //     refreshDiv.innerHTML = this.$store.state.totalEnergyUsed + "Kw/hr";
+  // };`,
+  //       // `startTime()`,
+  //       5000
+  //     );
+  //   });
+  //   // this.timer = setInterval(this.startTime, 5000);
+  },
+
+  beforeDestroy() {
+    // this.refresh();
+  },
+
   computed: {
     user() {
       return this.$store.state.user;

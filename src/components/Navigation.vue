@@ -50,12 +50,12 @@
                   <p>Profile</p>
                 </router-link>
               </div>
-              <div class="option">
+              <!-- <div class="option">
                 <router-link :to="{ name: 'Admin' }" class="option">
                   <adminIcon class="icon" />
                   <p>Admin</p>
                 </router-link>
-              </div>
+              </div> -->
               <div @click="signOut" class="option">
                 <signOutIcon class="icon" />
                 <p>Sign Out</p>
@@ -85,12 +85,6 @@
         <router-link class="link" v-if="!user" :to="{ name: 'Login' }"
           >Sign in</router-link
         >
-
-        <!-- If the person is signed in, do this: -->
-        <!-- <router-link class="link" to="#">Home</router-link>
-        <router-link class="link" to="#">Light</router-link>
-        <router-link class="link" to="#">Settings</router-link>
-        <router-link class="link" to="#">Logout</router-link> -->
       </ul>
     </transition>
   </header>
@@ -99,7 +93,7 @@
 <script>
 import menuIcon from "@/assets/Icons/bars-regular.svg";
 import userIcon from "@/assets/Icons/user-alt-light.svg";
-import adminIcon from "@/assets/Icons/user-crown-light.svg";
+// import adminIcon from "@/assets/Icons/user-crown-light.svg";
 import signOutIcon from "@/assets/Icons/sign-out-alt-regular.svg";
 
 // firebase
@@ -111,7 +105,7 @@ export default {
   components: {
     menuIcon,
     userIcon,
-    adminIcon,
+    // adminIcon,
     signOutIcon,
   },
   data() {
