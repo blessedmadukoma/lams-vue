@@ -131,7 +131,7 @@ export default {
         });
 
         // this.$router.push({ name: "Home" });
-        this.$router.push({ name: "Login" });
+        this.$router.push({ name: "Home" });
         return;
       }
       this.error = true;
