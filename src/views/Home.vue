@@ -63,7 +63,10 @@
               </div>
             </div>
             <div>
-              <router-link :to="{ name: 'Lights' }"
+              <!-- <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              > -->
+              <router-link to="#"
                 ><button class="view">View</button></router-link
               >
             </div>
@@ -85,7 +88,10 @@
               </div>
             </div>
             <div>
-              <router-link :to="{ name: 'Lights' }"
+              <!-- <router-link :to="{ name: 'Lights' }"
+                ><button class="view">View</button></router-link
+              > -->
+              <router-link to="#"
                 ><button class="view">View</button></router-link
               >
             </div>
