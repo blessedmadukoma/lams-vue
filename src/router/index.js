@@ -44,14 +44,14 @@ const routes = [
       title: "Login",
     },
   },
-  {
-    path: "/lights",
-    name: "Lights",
-    component: Lights,
-    meta: {
-      title: "Lights",
-    },
-  },
+  // {
+  //   path: "/lights",
+  //   name: "Lights",
+  //   component: Lights,
+  //   meta: {
+  //     title: "Lights",
+  //   },
+  // },
   {
     path: "/admin",
     name: "Admin",
