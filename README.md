@@ -28,6 +28,18 @@ npm run lint or yarn lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Application in action
+Turn on the lights:
+
+https://user-images.githubusercontent.com/49055048/184628803-a187a091-b7c2-4d06-a5e0-3df9bbfe9669.MP4
+
+----------
+
+Turn off the lights:
+
+https://user-images.githubusercontent.com/49055048/184629029-484178cb-0939-4c66-b299-0d100a28c418.MP4
+
+
 ### Images of the application
 Welcome Screen - Web: <br> 
 <img width="982" alt="Screenshot 2022-03-12 at 14 35 36" src="https://user-images.githubusercontent.com/49055048/158020213-838b5d12-1b28-4aac-b1c8-b5800a84d8ec.png">
