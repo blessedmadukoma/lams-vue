@@ -108,7 +108,7 @@ The ESP32 microcontroller interfaces with Firebase Realtime Database to receive 
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/blessedmadukoma/lams-vue.git
    cd lams-vue
    ```
 
