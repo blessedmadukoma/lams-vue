@@ -1,16 +1,16 @@
 import firebase from "firebase/app";
-import "firebase/firestore";
 import "firebase/database";
+import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDR2G0sEHuMvZb0X2sUVl_Fan7SjStfMJU",
-  authDomain: "lams-project-vue.firebaseapp.com",
-  databaseURL: "https://lams-project-vue-default-rtdb.firebaseio.com",
-  projectId: "lams-project-vue",
-  storageBucket: "lams-project-vue.appspot.com",
-  messagingSenderId: "4800613356",
-  appId: "1:4800613356:web:25ef22ccca4cbee27a0ec9",
-  measurementId: "G-YRLVYSQ9FQ"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGE_SENDING_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
