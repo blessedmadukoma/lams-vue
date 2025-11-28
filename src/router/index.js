@@ -5,7 +5,7 @@ import Home from "@/views/Home.vue";
 import Register from "@/views/Register.vue";
 import Login from "@/views/Login.vue";
 import ForgotPassword from "@/views/ForgotPassword.vue";
-import Lights from "@/views/Lights.vue";
+// import Lights from "@/views/Lights.vue";
 import Profile from "@/views/Profile.vue";
 import Admin from "@/views/Admin.vue";
 
@@ -44,14 +44,14 @@ const routes = [
       title: "Login",
     },
   },
-  {
-    path: "/lights",
-    name: "Lights",
-    component: Lights,
-    meta: {
-      title: "Lights",
-    },
-  },
+  // {
+  //   path: "/lights",
+  //   name: "Lights",
+  //   component: Lights,
+  //   meta: {
+  //     title: "Lights",
+  //   },
+  // },
   {
     path: "/admin",
     name: "Admin",

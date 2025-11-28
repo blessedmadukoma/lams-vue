@@ -14,9 +14,9 @@
           <router-link class="link" v-if="user" :to="{ name: 'Home' }"
             >Dashboard</router-link
           >
-          <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
-            >Lights</router-link
-          >
+          <!-- <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
+            >Lights</router-link 
+          > -->
           <router-link class="link" v-if="!user" :to="{ name: 'Register' }"
             >Sign up</router-link
           >
@@ -72,9 +72,9 @@
         <router-link class="link" v-if="user" :to="{ name: 'Home' }"
           >Dashboard</router-link
         >
-        <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
+        <!-- <router-link class="link" v-if="user" :to="{ name: 'Lights' }"
           >Lights</router-link
-        >
+        > -->
         <router-link v-if="user" :to="{ name: 'Profile' }" class="link">
           <p>Profile</p>
         </router-link>
@@ -288,7 +288,7 @@ header {
 
   .mobile-nav {
     padding: 20px;
-    width: 30%;
+    width: 35%;
     max-width: 250px;
     display: flex;
     flex-direction: column;

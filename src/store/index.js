@@ -57,6 +57,7 @@ export default new Vuex.Store({
     },
 
     setProfileInfo(state, doc) {
+      // console.log(doc.users);
       state.profileID = firebase.auth().currentUser.uid;
       state.profileEmail = doc.users[state.profileID].email;
       state.profileFirstName = doc.users[state.profileID].firstName;
@@ -92,14 +93,14 @@ export default new Vuex.Store({
       const dbRef = firebase.database().ref();
 
       // wait for 3 seconds -> to load everything
-      sleep(5000);
       
+
       dbRef
         .get()
         .then((snapshot) => {
           if (snapshot.exists()) {
-            // console.log(snapshot.val());
-            console.log(snapshot.val());
+            // console.log("Snapshot: ", snapshot.val());
+            sleep(3000);
             commit("setProfileInfo", snapshot.val());
             commit("setProfileInitials");
           } else {
